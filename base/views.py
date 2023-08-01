@@ -87,7 +87,9 @@ def room(request: any, pk: str) -> HttpResponse:
             room=room,
             body=request.POST.get('body')
         )
+
         room.participants.add(request.user)
+        
         return redirect('room', pk=room.id)
 
     context = {
